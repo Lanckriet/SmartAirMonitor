@@ -10,24 +10,27 @@
     <meta name="theme-color" content="#0074d9" />
     <link rel="stylesheet" type="text/css" href="css/reset.css" />
     <link rel="stylesheet" type="text/css" href="css/screen.css" />
+    <script src="js/main.js"></script>
     <title>Dashboard</title>
 </head>
 
 <body>
     <header>
+        <hr />
         <h1>SAM</h1>
         <h2>Smart Air Monitor</h2>
+        <hr />
     </header>
     <main>
             <div id="container">
-                <h1>Overview</h1>
-                <p>Last updated at: 1/1/1970 at 00:00</p>
-                <h2>Temperature & Humidity</h2>
-                <h3><span id="temp">21.6</span>˚C | <span id="hum">47</span>%</h3>
-                <h2>Carbon Monoxide Level</h2>
-                <h3><span id="co">28</span>ppm, status is currently <span id="co-rating">SAFE</span></h3>
-                <h2>Particulate Matter Level</h2>
-                <h3><span id="pm">16</span>ppm, status is currently <span id="pm-rating">SAFE</span></h3>
+                <h1>- Overview -</h1>
+                <p>Last updated: <span id="last-updated"></span></p>
+                <h2><span>Temperature & Humidity</span></h2>
+                <h3>Current room temperature is <span id="temp"></span>˚C, with <span id="hum"></span>% humidity.</h3>
+                <h2><span>Carbon Monoxide Level</span></h2>
+                <h3>Latest measurement shows <span id="co"></span>ppm -> <span id="co-rating">SAFE</span></h3>
+                <h2><span>Particulate Matter Level</span></h2>
+                <h3>Latest measurement shows <span id="pm"></span>ppm -> <span id="pm-rating">SAFE</span></h3>
             </div>
     </main>
     <footer>
