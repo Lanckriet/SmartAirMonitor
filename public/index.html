@@ -14,7 +14,26 @@
 </head>
 
 <body>
-    <h1>Hello, World!</h1>
+    <header>
+        <h1>SAM</h1>
+        <h2>Smart Air Monitor</h2>
+    </header>
+    <main>
+            <div id="container">
+                <h1>Overview</h1>
+                <p>Last updated at: 1/1/1970 at 00:00</p>
+                <h2>Temperature & Humidity</h2>
+                <h3><span id="temp">21.6</span>˚C | <span id="hum">47</span>%</h3>
+                <h2>Carbon Monoxide Level</h2>
+                <h3><span id="co">28</span>ppm, status is currently <span id="co-rating">SAFE</span></h3>
+                <h2>Particulate Matter Level</h2>
+                <h3><span id="pm">16</span>ppm, status is currently <span id="pm-rating">SAFE</span></h3>
+            </div>
+    </main>
+    <footer>
+        <hr />
+        &copy; 2021 - Oliver Lanckriet
+    </footer>
     <!-- The core Firebase JS SDK is always required and must be listed first -->
     <script src="/__/firebase/8.6.8/firebase-app.js"></script>
 
