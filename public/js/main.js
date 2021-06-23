@@ -36,7 +36,7 @@ function generateRatings() {
     let co_rating = document.querySelector('#co-rating');
     let pm = document.querySelector('#pm').innerHTML;
     let pm_rating = document.querySelector('#pm-rating');
-    switch(co_rating) {
+    switch(co) {
         case co < 100:
             co_rating.innerHTML = "LOW";
             break;
@@ -50,18 +50,18 @@ function generateRatings() {
             co_rating.innerHTML = "LOW";
     }
 
-    switch(co_rating) {
-        case co < 50:
-            co_rating.innerHTML = "LOW";
+    switch(pm) {
+        case pm < 50:
+            pm_rating.innerHTML = "LOW";
             break;
-        case co <= 100:
-            co_rating.innerHTML = "MODERATE";
+        case pm <= 100:
+            pm_rating.innerHTML = "MODERATE";
             break;
-        case co > 100:
-            co_rating.innerHTML = "HIGH";
+        case pm > 100:
+            pm_rating.innerHTML = "HIGH";
             break;
         default:
-            co_rating.innerHTML = "LOW";
+            pm_rating.innerHTML = "LOW";
     }
 
 
