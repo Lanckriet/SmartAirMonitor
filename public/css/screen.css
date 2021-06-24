@@ -40,6 +40,7 @@ main h1 {
 }
 
 main table {
+    overflow-x: auto;
     margin: auto auto 2rem auto;
     width: 90%;
 }
@@ -61,8 +62,6 @@ main th {
 
 main td {
     height: 2rem;
-    padding-top: auto;
-    padding-bottom: auto;
     text-align: center;
     font-family: 'Share Tech Mono';
 }
@@ -132,7 +131,7 @@ footer {
 }
 
 /* Responsiveness */
-@media screen and (max-width: 1081px) {
+@media screen and (max-width: 760px), (min-device-width: 768px) and (max-device-width: 1024px) {
     header {
         margin-top: 3rem;
     }
@@ -140,20 +139,76 @@ footer {
     footer {
         margin-bottom: 3rem;
     }
+    
+    #buttons {
+        width: 90%;
+    }
+
+    .void {
+        display: none;
+    }
 
     .selection {
-        margin-left: auto;
-        margin-right: auto;
+        width: 100%;
         display: block;
     }
 
     .selection:first-of-type {
-        margin-bottom: 2rem;
+        margin-bottom: 1rem;
+    }
+
+    .selection:last-of-type {
+        margin-left: 0;
     }
 
     #container {
         width: 80%;
     }
 
-    
+    table, caption, thead, tbody, th, td, tr {
+        display: block;
+    }
+
+    thead tr {
+		position: absolute;
+		top: -9999px;
+		left: -9999px;
+	}
+
+    td { 
+        width: 50%;
+		border: none;
+		position: relative;
+		padding-left: 50%; 
+	}
+
+    td p {
+        position: absolute;
+        top: 6px;
+        padding-right: 6px;
+        width: 45%;
+        font-size: 1.25rem;
+    }
+	
+	td:before { 
+		position: absolute;
+        top:6px;
+		left: 6px;
+		width: 45%; 
+		padding-right: 10px; 
+		white-space: nowrap;
+        font-weight: bold;
+        font-size: 1.25rem;
+        font-family: Raleway;
+	}
+
+    tr:first-of-type td { background-color: white; }
+    tr:first-of-type td:nth-of-type(1):before { content: "Temperature"; }
+	tr:first-of-type td:nth-of-type(2):before { content: "Humidity"; }
+	tr:first-of-type td:nth-of-type(3):before { content: "CO Level"; }
+	tr:first-of-type td:nth-of-type(4):before { content: "PM Level"; } 
+
+    tr:nth-of-type(2) { margin-top: 1rem; }
+    tr:nth-of-type(2) td:nth-of-type(3):before { content: "CO Rating"; }
+    tr:nth-of-type(2) td:nth-of-type(4):before { content: "PM Rating"; }
 }
