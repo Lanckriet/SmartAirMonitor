@@ -25,11 +25,11 @@ function initializeMeasurements() {
 
     // carbon monoxide
     let carbonmonoxide = document.querySelector('#co');
-    carbonmonoxide.innerHTML = 378;
+    carbonmonoxide.innerHTML = 95;
 
     // particulate matter
     let particulatematter = document.querySelector('#pm');
-    particulatematter.innerHTML = 71;
+    particulatematter.innerHTML = 12;
 }
 
 // generate ratings based off co & pm levels
@@ -45,7 +45,7 @@ function generateRatings() {
 
     console.log(co, pm);
 
-    switch(true) {
+    switch (true) {
         case co <= 100:
             co_rating.innerHTML = "LOW";
             co_rating_cell.style.backgroundColor = "rgb(137, 232, 148)";
@@ -60,7 +60,7 @@ function generateRatings() {
             break;
     }
 
-    switch(true) {
+    switch (true) {
         case pm <= 50:
             pm_rating.innerHTML = "LOW";
             pm_rating_cell.style.backgroundColor = "rgb(137, 232, 148)";
@@ -95,7 +95,7 @@ function changeSiteAccentColour() {
     let colour;
 
     // compare ratings
-    switch(true) {
+    switch (true) {
         case (co_rating === "LOW") && (pm_rating === "LOW"):
             console.log("low measurements, change to green");
             colour = "rgb(137, 232, 148)";
@@ -116,7 +116,7 @@ function changeSiteAccentColour() {
     header.style.backgroundColor = colour;
     footer.style.backgroundColor = colour;
     // use foreach loop to get both buttons
-    button.forEach(function(item) {
+    button.forEach(function (item) {
         item.style.backgroundColor = colour;
     });
 }
