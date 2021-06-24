@@ -11,10 +11,11 @@
     <link rel="apple-touch-icon" href="/images/favicon-desktop.png">
     <link href="https://fonts.googleapis.com/css?family=Raleway:400,800" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/reset.css" />
     <link rel="stylesheet" type="text/css" href="css/screen.css" />
     <script src="js/main.js"></script>
+    <script src="js/colour.js"></script>
     <title>Dashboard</title>
 </head>
 
@@ -38,16 +39,28 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td><p><span id="temp"></span>˚C</p></td>
-                        <td><p><span id="hum"></span>%</p></td>
-                        <td><p><span id="co"></span>ppm</p></td>
-                        <td><p><span id="pm"></span>ppm</p></td>
+                        <td>
+                            <p><span id="temp"></span>˚C</p>
+                        </td>
+                        <td>
+                            <p><span id="hum"></span>%</p>
+                        </td>
+                        <td>
+                            <p><span id="co"></span>ppm</p>
+                        </td>
+                        <td>
+                            <p><span id="pm"></span>ppm</p>
+                        </td>
                     </tr>
                     <tr>
                         <td class="void"></td>
                         <td class="void">Current Rating:</td>
-                        <td class="rating" id="rating1"><p><span id="co-rating"></span></p></td>
-                        <td class="rating" id="rating2"><p><span id="pm-rating"></span></p></td>
+                        <td class="rating" id="rating1">
+                            <p><span id="co-rating"></span></p>
+                        </td>
+                        <td class="rating" id="rating2">
+                            <p><span id="pm-rating"></span></p>
+                        </td>
                     </tr>
                 </tbody>
             </table>
