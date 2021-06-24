@@ -3,8 +3,20 @@
 window.addEventListener("DOMContentLoaded", init);
 
 function init() {
+    // register service worker
+    registerServiceWorker();
+    // get measurement data
     initializeMeasurements();
+    // get ratings based on data
     generateRatings();
+}
+
+function registerServiceWorker() {
+    if ("serviceWorker" in navigator) {
+        navigator.serviceWorker.register("/sw.js")
+            .then(res => console.log("Successfully registered service worker with scope:", res.scope))
+            .catch(err => console.error("Error installing service worker", err));
+    }
 }
 
 // get all the data into their respective spans
@@ -23,11 +35,11 @@ function initializeMeasurements() {
 
     // carbon monoxide
     let carbonmonoxide = document.querySelector('#co');
-    carbonmonoxide.innerHTML = 21651;
+    carbonmonoxide.innerHTML = 85;
 
     // particulate matter
     let particulatematter = document.querySelector('#pm');
-    particulatematter.innerHTML = 854;
+    particulatematter.innerHTML = 6;
 }
 
 // generate ratings based off co & pm levels
