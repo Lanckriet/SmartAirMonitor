@@ -44,9 +44,12 @@ main table {
     width: 90%;
 }
 
+main tbody tr:first-of-type {
+    background-color:rgb(231, 231, 224);
+}
+
 main th, td {
     vertical-align: middle;
-    border: 1px solid black;
     width: 25%;
 }
 
@@ -60,6 +63,8 @@ main td {
     height: 2rem;
     padding-top: auto;
     padding-bottom: auto;
+    text-align: center;
+    font-family: 'Share Tech Mono';
 }
 
 table caption {
@@ -84,7 +89,12 @@ footer {
 
 /* Classes */
 .void {
-    border: none;
+    font-family: Raleway;
+    font-weight: bold;
+}
+
+.rating {
+    background-color:rgb(137, 232, 148);
 }
 
 .selection {
@@ -127,15 +137,23 @@ footer {
         margin-top: 3rem;
     }
 
-    main h3 {
-        padding-right: 35px;
+    footer {
+        margin-bottom: 3rem;
+    }
+
+    .selection {
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+    }
+
+    .selection:first-of-type {
+        margin-bottom: 2rem;
     }
 
     #container {
         width: 80%;
     }
 
-    footer {
-        margin-bottom: 3rem;
-    }
+    
 }
