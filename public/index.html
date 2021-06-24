@@ -8,6 +8,8 @@
     <meta name="description"
         content="Progressive Web App for the Smart Air Monitor, an IoT project by Oliver Lanckriet.">
     <meta name="theme-color" content="#0074d9" />
+    <link href="https://fonts.googleapis.com/css?family=Raleway:400,800" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/reset.css" />
     <link rel="stylesheet" type="text/css" href="css/screen.css" />
     <script src="js/main.js"></script>
@@ -16,26 +18,46 @@
 
 <body>
     <header>
-        <hr />
         <h1>SAM</h1>
-        <h2>Smart Air Monitor</h2>
-        <hr />
+        <h2>the smart air monitor</h2>
     </header>
     <main>
-            <div id="container">
-                <h1>- Overview -</h1>
-                <p>Last updated: <span id="last-updated"></span></p>
-                <h2><span>Temperature & Humidity</span></h2>
-                <h3>Current room temperature is <span id="temp"></span>˚C, with <span id="hum"></span>% humidity.</h3>
-                <h2><span>Carbon Monoxide Level</span></h2>
-                <h3>Latest measurement shows <span id="co"></span>ppm -> <span id="co-rating"></span></h3>
-                <h2><span>Particulate Matter Level</span></h2>
-                <h3>Latest measurement shows <span id="pm"></span>ppm -> <span id="pm-rating">SAFE</span></h3>
+        <div id="container">
+            <h1>- overview -</h1>
+            <table id="measurements">
+                <caption>Last updated: <span id="last-updated"></span></caption>
+                <thead>
+                    <tr>
+                        <th>Temperature</th>
+                        <th>Humidity</th>
+                        <th>CO Level</th>
+                        <th>PM Level</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span id="temp"></span>˚C</td>
+                        <td><span id="hum"></span>%</td>
+                        <td><span id="co"></span>ppm</td>
+                        <td><span id="pm"></span>ppm</td>
+                    </tr>
+                    <tr>
+                        <td class="void"></td>
+                        <td class="void"></td>
+                        <td class="rating"><span id="co-rating"></span></td>
+                        <td class="rating"><span id="pm-rating"></span></td>
+                    </tr>
+                </tbody>
+            </table>
+            <div id="buttons">
+                <button class="selection" id="recent">Latest Measurements</button>
+                <button class="selection" id="average">24 Hour Average</button>
             </div>
+            <br />
+        </div>
     </main>
     <footer>
-        <hr />
-        &copy; 2021 - Oliver Lanckriet
+        <p>A summertime project by Oliver Lanckriet</p>
     </footer>
     <!-- The core Firebase JS SDK is always required and must be listed first -->
     <script src="/__/firebase/8.6.8/firebase-app.js"></script>
