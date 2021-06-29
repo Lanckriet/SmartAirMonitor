@@ -19,7 +19,12 @@ function registerServiceWorker() {
     }
 }
 
+let channel_id = 1429783;
+let api_key = "TZOJZDKFTO00U0B4";
+
+
 // get all the data into their respective spans
+setInterval(initializeMeasurements, 60000); // execute this every minute
 function initializeMeasurements() {
     // update timestamp
     let timestamp = document.querySelector('#last-updated');
@@ -27,19 +32,31 @@ function initializeMeasurements() {
 
     // temperature
     let temperature = document.querySelector('#temp');
-    temperature.innerHTML = 21.6;
+    let temp;
+    $.getJSON('https://api.thingspeak.com/channels/' + channel_id + '/feed/last.json?api_key=' + api_key, function(data) {
+        temp = data.field1;
+        if (temp) {
+            temperature.innerHTML = parseFloat(temp).toFixed(1);
+        }
+    });
 
     // humidity
     let humidity = document.querySelector('#hum');
-    humidity.innerHTML = 47;
+    let hum;
+    $.getJSON('https://api.thingspeak.com/channels/' + channel_id + '/feed/last.json?api_key=' + api_key, function(data) {
+        hum = data.field2;
+        if (temp) {
+            humidity.innerHTML = Math.round(hum * 100) / 100;
+        }
+    });
 
     // carbon monoxide
     let carbonmonoxide = document.querySelector('#co');
-    carbonmonoxide.innerHTML = 85;
+    carbonmonoxide.innerHTML = 81;
 
     // particulate matter
     let particulatematter = document.querySelector('#pm');
-    particulatematter.innerHTML = 6;
+    particulatematter.innerHTML = 16;
 }
 
 // generate ratings based off co & pm levels
