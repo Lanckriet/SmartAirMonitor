@@ -98,7 +98,7 @@ footer {
 
 .selection {
     height: 2rem;
-    width: 45%;
+    width: 46%;
     font-family: Raleway;
     font-size: 1.25rem;
     background-color:rgb(137, 232, 148);
@@ -106,11 +106,11 @@ footer {
 }
 
 .selection:first-of-type {
-    margin-right: 2.5%;
+    margin-right: 2%;
 }
 
 .selection:last-of-type {
-    margin-left: 2.5%;
+    margin-left: 2%;
 }
 
 /* IDs */

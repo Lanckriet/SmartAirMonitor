@@ -11,7 +11,7 @@ function init() {
     generateRatings();
     // assign eventlisteners to the buttons
     document.querySelector("#recent").addEventListener("click", initializeMeasurements);
-    //document.querySelector("#average").addEventListener("click", get24HourAverage);
+    document.querySelector("#average").addEventListener("click", get24HourAverage);
 }
 
 function registerServiceWorker() {
@@ -28,7 +28,6 @@ let api_key = "TZOJZDKFTO00U0B4";
 
 
 // get all the data into their respective spans
-setInterval(initializeMeasurements, 60000); // execute this every minute
 function initializeMeasurements() {
     // update timestamp
     let timestamp = document.querySelector('#last-updated');
@@ -67,6 +66,51 @@ function initializeMeasurements() {
     // particulate matter
     let particulatematter = document.querySelector('#pm');
     particulatematter.innerHTML = 16;
+
+    // button clicked -> make the text bold and make other button not bold
+    let buttonRecent = document.querySelector("#recent");
+    let buttonAverage = document.querySelector("#average");
+    buttonRecent.style.fontWeight = "bold";
+    buttonAverage.style.fontWeight = "normal";
+}
+
+// get the average of the last 24 hours in their spans
+function get24HourAverage() {
+    // temperature
+    let temperature = document.querySelector('#temp');
+    $.getJSON('https://api.thingspeak.com/channels/' + channel_id + '/fields/1.json?api_key=' + api_key, function(data) {
+        if (data) {
+            let entries = data.feeds;
+            let total = 0.00;
+            let counter = 0;
+            entries.forEach(function(i) { 
+                total += parseFloat(i.field1);
+                counter += 1;
+            });
+            temperature.innerHTML = parseFloat(total/counter).toFixed(1);
+        }
+    });
+
+    // humidity
+    let humidity = document.querySelector('#hum');
+    $.getJSON('https://api.thingspeak.com/channels/' + channel_id + '/fields/2.json?api_key=' + api_key, function(data) {
+        if (data) {
+            let entries = data.feeds;
+            let total = 0.00;
+            let counter = 0;
+            entries.forEach(function(i) { 
+                total += parseFloat(i.field2);
+                counter += 1;
+            });
+            humidity.innerHTML = parseFloat(total/counter).toFixed(0);
+        }
+    });
+
+    // button clicked -> make the text bold and make other button not bold
+    let buttonRecent = document.querySelector("#recent");
+    let buttonAverage = document.querySelector("#average");
+    buttonRecent.style.fontWeight = "normal";
+    buttonAverage.style.fontWeight = "bold";
 }
 
 // generate ratings based off co & pm levels
