@@ -9,6 +9,9 @@ function init() {
     initializeMeasurements();
     // get ratings based on data
     generateRatings();
+    // assign eventlisteners to the buttons
+    document.querySelector("#recent").addEventListener("click", initializeMeasurements);
+    //document.querySelector("#average").addEventListener("click", get24HourAverage);
 }
 
 function registerServiceWorker() {
@@ -19,6 +22,7 @@ function registerServiceWorker() {
     }
 }
 
+// get ThingSpeak channel id & api key
 let channel_id = 1429783;
 let api_key = "TZOJZDKFTO00U0B4";
 
@@ -28,7 +32,13 @@ setInterval(initializeMeasurements, 60000); // execute this every minute
 function initializeMeasurements() {
     // update timestamp
     let timestamp = document.querySelector('#last-updated');
-    timestamp.innerHTML = "01/01/1970 at 00:00";
+    $.getJSON('https://api.thingspeak.com/channels/' + channel_id + '/feed/last.json?api_key=' + api_key, function(data) {
+        if (data) {
+            timestamp.innerHTML = data.created_at.substring(0, 10);
+            timestamp.innerHTML += " at ";
+            timestamp.innerHTML += data.created_at.substring(11, 19);
+        }
+    });
 
     // temperature
     let temperature = document.querySelector('#temp');
