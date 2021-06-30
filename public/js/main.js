@@ -45,8 +45,8 @@ function initializeMeasurements() {
     let hum;
     $.getJSON('https://api.thingspeak.com/channels/' + channel_id + '/feed/last.json?api_key=' + api_key, function(data) {
         hum = data.field2;
-        if (temp) {
-            humidity.innerHTML = Math.round(hum * 100) / 100;
+        if (hum) {
+            humidity.innerHTML = parseFloat(hum).toFixed(0);
         }
     });
 
