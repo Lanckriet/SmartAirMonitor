@@ -61,7 +61,13 @@ function initializeMeasurements() {
 
     // carbon monoxide
     let carbonmonoxide = document.querySelector('#co');
-    carbonmonoxide.innerHTML = 81;
+    let co;
+    $.getJSON('https://api.thingspeak.com/channels/' + channel_id + '/feed/last.json?api_key=' + api_key, function(data) {
+        co = data.field3;
+        if (co) {
+            carbonmonoxide.innerHTML = co;
+        }
+    });
 
     // particulate matter
     let particulatematter = document.querySelector('#pm');
@@ -106,6 +112,21 @@ function get24HourAverage() {
         }
     });
 
+    // carbon monoxide
+    let carbonmonoxide = document.querySelector('#co');
+    $.getJSON('https://api.thingspeak.com/channels/' + channel_id + '/fields/3.json?api_key=' + api_key, function(data) {
+        if (data) {
+            let entries = data.feeds;
+            let total = 0.00;
+            let counter = 0;
+            entries.forEach(function(i) { 
+                total += parseFloat(i.field3);
+                counter += 1;
+            });
+            carbonmonoxide.innerHTML = parseFloat(total/counter).toFixed(0);
+        }
+    });
+
     // button clicked -> make the text bold and make other button not bold
     let buttonRecent = document.querySelector("#recent");
     let buttonAverage = document.querySelector("#average");
@@ -116,7 +137,7 @@ function get24HourAverage() {
 // generate ratings based off co & pm levels
 function generateRatings() {
     // get values, rating span & cells
-    let co = parseInt(document.querySelector('#co').innerHTML);
+    let co = document.querySelector('#co').innerHTML;
     let co_rating = document.querySelector('#co-rating');
 
     let pm = parseInt(document.querySelector('#pm').innerHTML);
